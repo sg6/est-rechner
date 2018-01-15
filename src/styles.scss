@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+@mixin clear() {
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.one-half {
+    float: left;
+    width: 50%;
+    &:last-child {
+        @include clear();
+    }
+}
+
+.row {    
+    @include clear();
+    &:nth-child(odd) {
+        background: #eee;
+    }
+}

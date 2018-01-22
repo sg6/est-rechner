@@ -41,8 +41,6 @@ export class FeeCalc {
             
             income -= base_sum
             tax += base_sum * base.rate
-
-            console.log(base.rate, base_sum, tax, income, range)
         }
 
         return tax 

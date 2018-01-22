@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SvaCalc } from './lib/sva_calc';
-import { EstCalc } from './lib/est_calc';
+import { FeeCalc } from './lib/fee_calc';
 import { CurrencyPipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
@@ -10,7 +9,7 @@ import localeDe from '@angular/common/locales/de';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [SvaCalc,EstCalc]
+  providers: [FeeCalc]
 })
 export class AppComponent implements OnInit {
   title = 'app';
@@ -31,10 +30,7 @@ export class AppComponent implements OnInit {
   profit: number = 0;
 
   constructor(
-    private _svaCalc: SvaCalc,
-    private _estCalc: EstCalc) {
-
-  }
+    private _calc: FeeCalc) { }
 
   ngOnInit() {
     registerLocaleData(localeDe);
@@ -43,11 +39,11 @@ export class AppComponent implements OnInit {
 
   calcSum() {
     this.ebitsva = this.income - this.expenses;
-    this.sva_sum = this._svaCalc.calc(this.ebitsva);
+    this.sva_sum = this._calc.svaCalc(this.ebitsva);
     this.ebit = this.ebitsva - this.sva_sum;
     this.advance_pamyments = this.advance_ins + this.advance_tax;
 
-    this.est = this._estCalc.calc(this.ebit);
+    this.est = this._calc.estCalc(this.ebit);
 
     this.full_payments = this.est + this.sva_sum;
     this.open_payments = this.full_payments - this.advance_pamyments;

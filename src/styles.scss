@@ -35,3 +35,19 @@ body {
         background: #eee;
     }
 }
+
+
+.red {
+    &.color-full {
+        background: rgba(255,0,0, 0.5);
+    }
+    &.color-light {
+        background: rgba(255,0,0, 0.2);
+    }
+}
+
+.green {
+    &.color-full {
+        background: rgba(0,255,0, 0.5);
+    }
+}

@@ -10,4 +10,23 @@
     border: 1px solid #ddd;
     border-radius: 2px;
     box-shadow: 2px 2px 0 #ccc;
+
+    input {
+        display: block;
+        max-width: 80%;
+        float: right;
+    }
+    label {
+        clear: both;
+        display: block;
+        &:after {
+            display: block;
+            clear: both;
+            content: "";
+        }
+    }
+}
+
+.info {
+    margin: 20px 0;
 }

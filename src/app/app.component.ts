@@ -29,6 +29,12 @@ export class AppComponent implements OnInit {
   sva_sum: number = 0;
   profit: number = 0;
 
+  additional_allowance: number = 0;
+  allowance: number = 0;
+
+  readonly MAX_ALLOWANCE = 3900;
+  readonly ALLOWANCE_RATE = 0.13;
+
   constructor(
     private _calc: FeeCalc) { }
 
@@ -43,11 +49,12 @@ export class AppComponent implements OnInit {
     this.ebit = this.ebitsva - this.sva_sum;
     this.advance_pamyments = this.advance_ins + this.advance_tax;
 
-    this.est = this._calc.estCalc(this.ebit);
+    this.allowance = Math.min(this.MAX_ALLOWANCE, this.ALLOWANCE_RATE * this.ebit) + this.additional_allowance;
+    this.est = this._calc.estCalc(this.ebit - this.allowance);
 
     this.full_payments = this.est + this.sva_sum;
     this.open_payments = this.full_payments - this.advance_pamyments;
-    
+
     this.profit = this.ebit - this.est;
   }
 }

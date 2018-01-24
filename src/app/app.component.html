@@ -13,30 +13,41 @@
     <div class="form-control">
       <label>
         <span class="field">Einnahmen in EUR (exkl. MwSt)</span>
-        <input type="number" [(ngModel)]="income" (change)="calcSum()">
+        <input type="number" [(ngModel)]="income" (keyup)="calcSum()">
       </label>
     </div>
 
     <div class="form-control">
       <label>
         <span class="field">Ausgaben in EUR (exkl. MwSt)</span>
-        <input type="number" [(ngModel)]="expenses" (change)="calcSum()">
+        <input type="number" [(ngModel)]="expenses" (keyup)="calcSum()">
       </label>
     </div>
 
     <div class="form-control">
       <label>
         <span class="field">Vorauszahlungen EST</span>
-        <input type="number" [(ngModel)]="advance_tax" (change)="calcSum()">
+        <input type="number" [(ngModel)]="advance_tax" (keyup)="calcSum()">
       </label>
     </div>
 
     <div class="form-control">
       <label>
         <span class="field">Vorauszahlungen SVA</span>
-        <input type="number" [(ngModel)]="advance_ins" (change)="calcSum()">
+        <input type="number" [(ngModel)]="advance_ins" (keyup)="calcSum()">
       </label>
     </div>
+
+    <div class="form-control">
+      <label>
+        <span class="field">Zusätzlicher Freibetrag*</span>
+        <input type="number" [(ngModel)]="additional_allowance" (keyup)="calcSum()">
+      </label>
+    </div>
+  </div>
+
+  <div class="info">
+    <div class="field">* 13% Freibetrag werden einberechnet, bis zu 3.900€</div>
   </div>
 
   <div class="output" *ngIf="income > 0">
@@ -69,6 +80,15 @@
 
     <div class="row">
       <div class="label text-left one-half">
+        Freibetrag:
+      </div>
+      <div class="outcome text-right one-half">
+        {{ allowance | currency:'EUR':'€':'1.2-2':'de-DE' }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="label text-left one-half">
         EST:
       </div>
       <div class="outcome text-right one-half">
@@ -77,7 +97,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row red color-full">
       <div class="label text-left one-half">
         Zahlungen gesamt:
       </div>
@@ -95,7 +115,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row red color-light">
       <div class="label text-left one-half">
         offene Zahlungen:
       </div>
@@ -104,7 +124,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row green color-full">
       <div class="label text-left one-half">
         Gewinn nach Steuern:
       </div>

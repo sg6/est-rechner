@@ -22,8 +22,8 @@ export class FeeCalc {
             { min:  18000, max: 31000,    rate: 0.35 },
             { min:  31000, max: 60000,    rate: 0.42 },
             { min:  60000, max: 90000,    rate: 0.48 },
-            { min:  90000, max: 100000,   rate: 0.50 },
-            { min: 100000, max: Infinity, rate: 0.55 },
+            { min:  90000, max: 1000000,   rate: 0.50 },
+            { min: 1000000, max: Infinity, rate: 0.55 },
         ]
 
 
@@ -31,15 +31,14 @@ export class FeeCalc {
             let range = 0;
             if (base.max !== Infinity) {
                 range = base.max - base.min
+            } else {
+                range = income
             }
             if (range === 0 || income <= 0) {
                 return tax
             }
 
-            let base_sum: number = 0
-            if (base.max !== Infinity) {
-                base_sum = Math.min(income, range)
-            }
+            const base_sum = Math.min(income, range)
 
             income -= base_sum
             tax += base_sum * base.rate

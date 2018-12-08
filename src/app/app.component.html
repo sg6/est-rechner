@@ -44,6 +44,13 @@
         <input type="number" [(ngModel)]="additional_allowance" (keyup)="calcSum()">
       </label>
     </div>
+
+    <div class="form-control">
+      <label>
+        <span class="field">Ausgabenpauschalierung</span>
+        <input type="checkbox" [(ngModel)]="flat" (change)="calcSum()">
+      </label>
+    </div>
   </div>
 
   <div class="info">
@@ -54,24 +61,6 @@
     <div class="row">
       <div class="label text-left one-half">
         Ertrag:
-      </div>
-      <div class="outcome text-right one-half">
-        {{ ebitsva | currency:'EUR':'€':'1.2-2':'de-DE' }}
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="label text-left one-half">
-        SVA (gesamt):
-      </div>
-      <div class="outcome text-right one-half">
-        {{ sva_sum | currency:'EUR':'€':'1.2-2':'de-DE' }}
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="label text-left one-half">
-        Berechnungsgrundlage EST:
       </div>
       <div class="outcome text-right one-half">
         {{ ebit | currency:'EUR':'€':'1.2-2':'de-DE' }}
@@ -87,6 +76,15 @@
       </div>
     </div>
 
+    <div class="row border-bottom">
+      <div class="label text-left one-half">
+        Berechnungsgrundlage:
+      </div>
+      <div class="outcome text-right one-half">
+        {{ base | currency:'EUR':'€':'1.2-2':'de-DE' }}
+      </div>
+    </div>
+
     <div class="row">
       <div class="label text-left one-half">
         EST:
@@ -96,6 +94,14 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="label text-left one-half">
+        SVA:
+      </div>
+      <div class="outcome text-right one-half">
+        {{ sva_sum | currency:'EUR':'€':'1.2-2':'de-DE' }}
+      </div>
+    </div>
 
     <div class="row red color-full">
       <div class="label text-left one-half">

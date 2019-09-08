@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FeeCalc } from './lib/fee_calc';
+import { FeeCalc } from './helper/fee_calc';
 import { CurrencyPipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
   }
 
   calcSum() {
-    this.ebit = this.income - (this.expenses + this.advance_ins)
+    this.ebit = this.income - (this.expenses)
     this.advance_pamyments = this.advance_ins + this.advance_tax
 
     this.allowance = Math.min(this.MAX_ALLOWANCE, this.ALLOWANCE_RATE * this.ebit) + this.additional_allowance
@@ -55,12 +55,12 @@ export class AppComponent implements OnInit {
     }
     this.base = this.ebit - this.allowance
 
-    this.est = this._calc.estCalc(this.base);
-    this.sva_sum = this._calc.svaCalc(this.base + Math.min(this.advance_ins, this._calc.svaCalc(this.base)));
+    this.sva_sum = this._calc.svaCalc(this.base);
+    this.est = this._calc.estCalc(this.base - this.sva_sum);
 
     this.full_payments = this.est + this.sva_sum;
     this.open_payments = this.full_payments - this.advance_pamyments;
 
-    this.profit = this.ebit - this.est - this.sva_sum + this.advance_ins;
+    this.profit = this.ebit - this.est - this.sva_sum;
   }
 }

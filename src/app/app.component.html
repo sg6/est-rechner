@@ -1,23 +1,23 @@
 <div id="wrapper">
   <div class="header">
     <h1>EST-Rechner</h1>
-    <p>
-      The project is still in progress and not finished yet. <br />
-      Please keep in mind, this is not and will never be a legally binding calculator.  <br />
-      It should only give an overview; errors and new laws can cause an extreme difference to the calculations used in this project.
+    <h2>Einkommenssteuerrechner für Selbständige in Österreich. Aktualisierte Werte für 2020</h2>
+    <p class="disclaimer">
+      The project is still work in progress. <br />
+      Please keep in mind, this is not and will never be a legally binding calculator - it should only give you a vague (and therefore probably inaccurate) overview about your expenses (tax and insurance).  <br />
     </p>
   </div>
   <div class="fields">
     <div class="form-control">
       <label>
-        <span class="field">Einnahmen in EUR (exkl. MwSt)</span>
+        <span class="field">Einnahmen in EUR (exkl. USt)</span>
         <input type="number" [(ngModel)]="income" (keyup)="calcSum()">
       </label>
     </div>
 
     <div class="form-control">
       <label>
-        <span class="field">Ausgaben in EUR (exkl. MwSt)</span>
+        <span class="field">Ausgaben in EUR (exkl. USt)</span>
         <input type="number" [(ngModel)]="expenses" (keyup)="calcSum()">
       </label>
     </div>

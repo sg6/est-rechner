@@ -20,7 +20,7 @@ export class FeeCalc {
 
         const BASE_TAX = [
             { min:      0, max: 11000,    rate: 0 },
-            { min:  11000, max: 18000,    rate: 0.25 },
+            { min:  11000, max: 18000,    rate: 0.20 },
             { min:  18000, max: 31000,    rate: 0.35 },
             { min:  31000, max: 60000,    rate: 0.42 },
             { min:  60000, max: 90000,    rate: 0.48 },

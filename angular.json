@@ -126,7 +126,6 @@
       }
     }
   },
-  "defaultProject": "est-rechner",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

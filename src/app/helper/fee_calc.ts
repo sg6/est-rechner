@@ -18,33 +18,36 @@ export class FeeCalc {
     estCalc(income) {
         let tax: number = 0;
 
-        const BASE_TAX = [
-            { min:      0, max: 11000,    rate: 0 },
-            { min:  11000, max: 18000,    rate: 0.20 },
-            { min:  18000, max: 31000,    rate: 0.35 },
-            { min:  31000, max: 60000,    rate: 0.42 },
-            { min:  60000, max: 90000,    rate: 0.48 },
-            { min:  90000, max: 1000000,   rate: 0.50 },
-            { min: 1000000, max: Infinity, rate: 0.55 },
+        const BASE_TAX: { min: number, rate: number }[] = [
+            { min: 0, rate: 0 },
+            { min:  11_000, rate: 0.20 },
+            { min:  18_000, rate: 0.30 },
+            { min:  31_000, rate: 0.41 },
+            { min:  60_000, rate: 0.48 },
+            { min:  90_000, rate: 0.50 },
+            { min: 1_000_000, rate: 0.55 },
         ]
 
 
-        for (const base of BASE_TAX) {
+        BASE_TAX.forEach((base, index) => {
             let range = 0;
-            if (base.max !== Infinity) {
-                range = base.max - base.min
+
+            const isLastBase = index === BASE_TAX.length - 1;
+            const max = isLastBase ? Infinity : BASE_TAX[index + 1].min;
+            if (max !== Infinity) {
+                range = max - base.min
             } else {
                 range = income
             }
             if (range === 0 || income <= 0) {
-                return tax
+                return
             }
 
             const base_sum = Math.min(income, range)
 
             income -= base_sum
             tax += base_sum * base.rate
-        }
+        });
 
         return tax
     }

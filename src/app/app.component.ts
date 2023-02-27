@@ -34,8 +34,8 @@ export class AppComponent implements OnInit {
   allowance: number = 0;
   flat: boolean = false;
 
-  readonly MAX_ALLOWANCE = 3900;
-  readonly ALLOWANCE_RATE = 0.13;
+  readonly MAX_ALLOWANCE = 4500;
+  readonly ALLOWANCE_RATE = 0.15;
 
   constructor(
     private _calc: FeeCalc) { }

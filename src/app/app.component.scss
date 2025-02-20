@@ -1,3 +1,8 @@
+main {
+    max-width: 800px;
+    padding: 24px;
+}
+
 h1 {
     font-size: 30px;
 }
@@ -6,9 +11,22 @@ h2 {
     font-size: 20px;
 }
 
+label, input {
+    text-align: right;
+}
+
+label {
+    width: 100%;
+    padding-right: 12px;
+}
+
+input[type=checkbox] {
+    margin-left: 12px;
+}
+
 .disclaimer {
     color: red;
-    font-size: 12px;
+    font-size: 16px;
     padding-bottom: 20px;
 }
 
@@ -18,4 +36,8 @@ h2 {
 
 .border-bottom {
     border-bottom: 1px solid black;
+}
+
+table td:nth-child(2) {
+    text-align: right;
 }

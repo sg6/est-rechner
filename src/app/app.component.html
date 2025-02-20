@@ -58,86 +58,82 @@
 
   @if(income > 0) {
     <div class="output">
-      <div class="row">
-        <div class="label text-left one-half">
-          Ertrag:
-        </div>
-        <div class="outcome text-right one-half">
-          {{ ebit | currency:'EUR':'€':'1.2-2':'de-DE' }}
-        </div>
-      </div>
-  
-      <div class="row">
-        <div class="label text-left one-half">
-          Freibetrag:
-        </div>
-        <div class="outcome text-right one-half">
-          {{ allowance | currency:'EUR':'€':'1.2-2':'de-DE' }}
-        </div>
-      </div>
-  
-      <div class="row border-bottom">
-        <div class="label text-left one-half">
-          Berechnungsgrundlage:
-        </div>
-        <div class="outcome text-right one-half">
-          {{ base | currency:'EUR':'€':'1.2-2':'de-DE' }}
-        </div>
-      </div>
-  
-      <div class="row">
-        <div class="label text-left one-half">
-          EST:
-        </div>
-        <div class="outcome text-right one-half">
-          {{ est | currency:'EUR':'€':'1.2-2':'de-DE' }}
-        </div>
-      </div>
-  
-      <div class="row">
-        <div class="label text-left one-half">
-          SVA:
-        </div>
-        <div class="outcome text-right one-half">
-          {{ sva_sum | currency:'EUR':'€':'1.2-2':'de-DE' }}
-        </div>
-      </div>
-  
-      <div class="row red color-full">
-        <div class="label text-left one-half">
-          Zahlungen gesamt:
-        </div>
-        <div class="outcome text-right one-half">
-          {{ full_payments | currency:'EUR':'€':'1.2-2':'de-DE' }}
-        </div>
-      </div>
-  
-      <div class="row">
-        <div class="label text-left one-half">
-          bereits bezahlt:
-        </div>
-        <div class="outcome text-right one-half">
-          {{ advance_pamyments | currency:'EUR':'€':'1.2-2':'de-DE' }}
-        </div>
-      </div>
-  
-      <div class="row red color-light">
-        <div class="label text-left one-half">
-          offene Zahlungen:
-        </div>
-        <div class="outcome text-right one-half">
-          {{ open_payments | currency:'EUR':'€':'1.2-2':'de-DE' }}
-        </div>
-      </div>
-  
-      <div class="row green color-full">
-        <div class="label text-left one-half">
-          Gewinn nach Steuern:
-        </div>
-        <div class="outcome text-right one-half">
-          {{ profit | currency:'EUR':'€':'1.2-2':'de-DE' }}
-        </div>
-      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              Ertrag
+            </td>
+            <td>
+              {{ ebit | currency:'EUR':'€':'1.2-2':'de-DE' }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Freibetrag
+            </td>
+            <td>
+              {{ allowance | currency:'EUR':'€':'1.2-2':'de-DE' }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Berechnungsgrundlage
+            </td>
+            <td>
+              {{ base | currency:'EUR':'€':'1.2-2':'de-DE' }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Einkommenssteuer
+            </td>
+            <td>
+              {{ est | currency:'EUR':'€':'1.2-2':'de-DE' }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Sozialversicherung (SVS)
+            </td>
+            <td>
+              {{ sva_sum | currency:'EUR':'€':'1.2-2':'de-DE' }}
+            </td>
+          </tr>
+          <tr class="red color-full">
+            <td>
+              Zahlungen gesamt
+            </td>
+            <td>
+              {{ full_payments | currency:'EUR':'€':'1.2-2':'de-DE' }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              bereits bezahlt
+            </td>
+            <td>
+              {{ advance_pamyments | currency:'EUR':'€':'1.2-2':'de-DE' }}
+            </td>
+          </tr>
+          <tr class="red color-light">
+            <td>
+              offene Zahlungen
+            </td>
+            <td>
+              {{ open_payments | currency:'EUR':'€':'1.2-2':'de-DE' }}
+            </td>
+          </tr>
+          <tr class="green color-full">
+            <td>
+              Gewinn nach Steuern
+            </td>
+            <td>
+              {{ profit | currency:'EUR':'€':'1.2-2':'de-DE' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   } @else {
     <p>

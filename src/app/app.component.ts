@@ -6,10 +6,11 @@ import localeDe from '@angular/common/locales/de';
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [FeeCalc]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    providers: [FeeCalc],
+    standalone: false
 })
 export class AppComponent implements OnInit {
   title = 'app';

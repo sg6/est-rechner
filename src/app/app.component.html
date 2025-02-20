@@ -1,7 +1,7 @@
-<div id="wrapper">
+<main class="container">
   <div class="header">
     <h1>EST-Rechner</h1>
-    <h2>Einkommenssteuerrechner für Selbständige in Österreich. Aktualisierte Werte für 2023</h2>
+    <h2>Einkommenssteuerrechner für Selbständige in Österreich. Aktualisierte Werte für 2025</h2>
     <p class="disclaimer">
       <b>Kein vollständiger Rechner - bestenfalls eine Orientierungshilfe!</b>
       The project is still work in progress. <br />
@@ -53,91 +53,96 @@
   </div>
 
   <div class="info">
-    <div class="field">* 15% Freibetrag werden einberechnet, bis zu 4.500€</div>
+    <div class="field">* 15% Freibetrag der ersten 33.000€ Gewinn sind bereits berücksichtigt.</div>
   </div>
 
-  <div class="output" *ngIf="income > 0">
-    <div class="row">
-      <div class="label text-left one-half">
-        Ertrag:
+  @if(income > 0) {
+    <div class="output">
+      <div class="row">
+        <div class="label text-left one-half">
+          Ertrag:
+        </div>
+        <div class="outcome text-right one-half">
+          {{ ebit | currency:'EUR':'€':'1.2-2':'de-DE' }}
+        </div>
       </div>
-      <div class="outcome text-right one-half">
-        {{ ebit | currency:'EUR':'€':'1.2-2':'de-DE' }}
+  
+      <div class="row">
+        <div class="label text-left one-half">
+          Freibetrag:
+        </div>
+        <div class="outcome text-right one-half">
+          {{ allowance | currency:'EUR':'€':'1.2-2':'de-DE' }}
+        </div>
+      </div>
+  
+      <div class="row border-bottom">
+        <div class="label text-left one-half">
+          Berechnungsgrundlage:
+        </div>
+        <div class="outcome text-right one-half">
+          {{ base | currency:'EUR':'€':'1.2-2':'de-DE' }}
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="label text-left one-half">
+          EST:
+        </div>
+        <div class="outcome text-right one-half">
+          {{ est | currency:'EUR':'€':'1.2-2':'de-DE' }}
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="label text-left one-half">
+          SVA:
+        </div>
+        <div class="outcome text-right one-half">
+          {{ sva_sum | currency:'EUR':'€':'1.2-2':'de-DE' }}
+        </div>
+      </div>
+  
+      <div class="row red color-full">
+        <div class="label text-left one-half">
+          Zahlungen gesamt:
+        </div>
+        <div class="outcome text-right one-half">
+          {{ full_payments | currency:'EUR':'€':'1.2-2':'de-DE' }}
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="label text-left one-half">
+          bereits bezahlt:
+        </div>
+        <div class="outcome text-right one-half">
+          {{ advance_pamyments | currency:'EUR':'€':'1.2-2':'de-DE' }}
+        </div>
+      </div>
+  
+      <div class="row red color-light">
+        <div class="label text-left one-half">
+          offene Zahlungen:
+        </div>
+        <div class="outcome text-right one-half">
+          {{ open_payments | currency:'EUR':'€':'1.2-2':'de-DE' }}
+        </div>
+      </div>
+  
+      <div class="row green color-full">
+        <div class="label text-left one-half">
+          Gewinn nach Steuern:
+        </div>
+        <div class="outcome text-right one-half">
+          {{ profit | currency:'EUR':'€':'1.2-2':'de-DE' }}
+        </div>
       </div>
     </div>
+  } @else {
+    <p>
+      Ergebnis negativ, keine Steuertabelle möglich.
+    </p>
+  }
 
-    <div class="row">
-      <div class="label text-left one-half">
-        Freibetrag:
-      </div>
-      <div class="outcome text-right one-half">
-        {{ allowance | currency:'EUR':'€':'1.2-2':'de-DE' }}
-      </div>
-    </div>
-
-    <div class="row border-bottom">
-      <div class="label text-left one-half">
-        Berechnungsgrundlage:
-      </div>
-      <div class="outcome text-right one-half">
-        {{ base | currency:'EUR':'€':'1.2-2':'de-DE' }}
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="label text-left one-half">
-        EST:
-      </div>
-      <div class="outcome text-right one-half">
-        {{ est | currency:'EUR':'€':'1.2-2':'de-DE' }}
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="label text-left one-half">
-        SVA:
-      </div>
-      <div class="outcome text-right one-half">
-        {{ sva_sum | currency:'EUR':'€':'1.2-2':'de-DE' }}
-      </div>
-    </div>
-
-    <div class="row red color-full">
-      <div class="label text-left one-half">
-        Zahlungen gesamt:
-      </div>
-      <div class="outcome text-right one-half">
-        {{ full_payments | currency:'EUR':'€':'1.2-2':'de-DE' }}
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="label text-left one-half">
-        bereits bezahlt:
-      </div>
-      <div class="outcome text-right one-half">
-        {{ advance_pamyments | currency:'EUR':'€':'1.2-2':'de-DE' }}
-      </div>
-    </div>
-
-    <div class="row red color-light">
-      <div class="label text-left one-half">
-        offene Zahlungen:
-      </div>
-      <div class="outcome text-right one-half">
-        {{ open_payments | currency:'EUR':'€':'1.2-2':'de-DE' }}
-      </div>
-    </div>
-
-    <div class="row green color-full">
-      <div class="label text-left one-half">
-        Gewinn nach Steuern:
-      </div>
-      <div class="outcome text-right one-half">
-        {{ profit | currency:'EUR':'€':'1.2-2':'de-DE' }}
-      </div>
-    </div>
-
-  </div>
-
-</div>
+</main>

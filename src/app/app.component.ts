@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   allowance: number = 0;
   flat: boolean = false;
 
-  readonly MAX_ALLOWANCE = 4500;
+  readonly MAX_ALLOWANCE = 4_950;
   readonly ALLOWANCE_RATE = 0.15;
 
   constructor(

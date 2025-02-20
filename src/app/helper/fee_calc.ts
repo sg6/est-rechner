@@ -4,13 +4,13 @@ export class FeeCalc {
 
     /// calculcations to be done
     svaCalc(income) {
-        const SVA_BASE_MAX: number = 81_900
-        const SVA_SUM_MIN: number = 1_744.36
+        const SVA_BASE_MAX: number = 90_300
+        const SVA_SUM_MIN: number = 1_817.88
 
         // 26,83% = 18,5% Pensions- + 6,8% Krankenversicherung +  1,53% Vorsorge
-        // 10,97 ist der monatliche Unfallversicherungsbeitrag
+        // 12,07 ist der monatliche Unfallversicherungsbeitrag
         const base = Math.min(income, SVA_BASE_MAX)
-        const sva_sum: number = (base * 0.2683) + (10.97 * 12)
+        const sva_sum: number = (base * 0.2683) + (12.07 * 12)
 
         return Math.max(sva_sum, SVA_SUM_MIN)
     }
@@ -20,11 +20,11 @@ export class FeeCalc {
 
         const BASE_TAX: { min: number, rate: number }[] = [
             { min: 0, rate: 0 },
-            { min:  11_000, rate: 0.20 },
-            { min:  18_000, rate: 0.30 },
-            { min:  31_000, rate: 0.41 },
-            { min:  60_000, rate: 0.48 },
-            { min:  90_000, rate: 0.50 },
+            { min:  13_308, rate: 0.20 },
+            { min:  21_617, rate: 0.30 },
+            { min:  35_836, rate: 0.40 },
+            { min:  69_166, rate: 0.48 },
+            { min:  103_072, rate: 0.50 },
             { min: 1_000_000, rate: 0.55 },
         ]
 
